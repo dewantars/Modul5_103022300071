@@ -1,32 +1,38 @@
-﻿public class PemrosesData()
+using System;
+class simpleDataBase<T>
 {
-    public float DapatkanNilaiTerbesar<T>(T a, T b, T c)
-    {
-        dynamic nilaiTerbesar = (dynamic)a;
-        dynamic data = (dynamic)b;
-        dynamic data2 = (dynamic)c;
+    private List<T> storedData;
+    private List<DateTime> inputDates;
 
-        if (nilaiTerbesar < data)
-        {
-            nilaiTerbesar = data;
-        }
-        if (nilaiTerbesar < data2)
-        {
-            nilaiTerbesar = data2;
-        }
-        return nilaiTerbesar;
+    public simpleDataBase()
+    {
+        storedData = new List<T>();
+        inputDates = new List<DateTime>();
     }
 
+    public void addNewData(T data)
+    {
+        storedData.Add(data);
+        inputDates.Add(DateTime.Now);
+    }
 
+    public void printAllData()
+    {
+        for (int i = 0; i < storedData.Count; i++)
+        {
+            Console.WriteLine("Data " + (i+1) +" berisi: " + storedData[i] + ", yang disimpan pada waktu UTC: " + inputDates[i]);
+        }
+    }
 }
 
 class Program
 {
     static void Main()
     {
-        PemrosesData pemrosesData = new PemrosesData();
-        float nilaiTerbesar = pemrosesData.DapatkanNilaiTerbesar(1.0f, 3.0f, 2.2f);
-        Console.WriteLine("Nilai terbesar dari 1.0, 3.0, 2.2 adalah");
-        Console.WriteLine(nilaiTerbesar);
+        simpleDataBase<float> db = new simpleDataBase<float>();
+        db.addNewData(1.0f);
+        db.addNewData(3.0f);
+        db.addNewData(2.2f);
+        db.printAllData();
     }
 }
