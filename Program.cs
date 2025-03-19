@@ -1,6 +1,4 @@
 ﻿using System;
-
-
 class simpleDataBase<T>
 {
     private List<T> storedData;
@@ -22,7 +20,7 @@ class simpleDataBase<T>
     {
         for (int i = 0; i < storedData.Count; i++)
         {
-            Console.WriteLine("Data " + i+1 +" berisi: " + storedData[i] + ", yang disimpan pada waktu UTC: " + inputDates[i]);
+            Console.WriteLine("Data " + (i+1) +" berisi: " + storedData[i] + ", yang disimpan pada waktu UTC: " + inputDates[i]);
         }
     }
 }
