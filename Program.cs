@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 class simpleDataBase<T>
 {
     private List<T> storedData;
